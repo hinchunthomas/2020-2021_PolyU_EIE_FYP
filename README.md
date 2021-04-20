@@ -7,12 +7,15 @@ This repository contains the code and the sound sample for the convolutional neu
 
 AudioSet was
 [released](https://research.googleblog.com/2017/03/announcing-audioset-dataset-for-audio.html)
-
+in March 2017 by Google's Sound Understanding team to provide a common
+large-scale evaluation task for audio event detection as well as a starting
+point for a comprehensive vocabulary of sound events.
 
 
 ## Contact
 
 Student Name: Wong Hin Chun
+
 Email: 17026418d@connect.edu.polyu.hk
 
 ## Credits
