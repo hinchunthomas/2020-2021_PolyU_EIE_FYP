@@ -1,0 +1,2 @@
+model_checkpoint_path: "audio_classifier_CNN_softmax_cross_entropy_with_logits_Evalval2"
+all_model_checkpoint_paths: "audio_classifier_CNN_softmax_cross_entropy_with_logits_Evalval2"
