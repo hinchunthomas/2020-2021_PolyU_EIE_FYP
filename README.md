@@ -3,7 +3,7 @@
 
 # 2020/2021 PolyU EIE Final Year Project
 
-This repository contains the code and the sound sample for the convolutional neural network (CNN) model. Transfer learning method is used in the model. The pre-trianed model we use is the VGGish, which is the trained by the database, called "AudioSet." It is dataset of over 2 million human-labeled 10-second YouTube video soundtracks, with labels taken from an ontology of more than 600 audio event classes.
+This repository contains the code and the sound sample for the convolutional neural network (CNN) model. Transfer learning method is used in the model. The pre-trianed model we use is the VGGish, which is the trained by the database, called "AudioSet." It is a dataset of over 2 million human-labeled 10-second YouTube video soundtracks, with labels taken from an ontology of more than 600 audio event classes.
 
 AudioSet was
 [released](https://research.googleblog.com/2017/03/announcing-audioset-dataset-for-audio.html)
