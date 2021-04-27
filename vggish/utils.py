@@ -30,15 +30,13 @@ def collect_example_and_label():
     provides the labels for corresponding rows in features.
     """
     # Folder directory for each class
-    car_horn_directory = r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data/car_horn'
-    children_playing_directory = r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data/children_playing'
-    dog_bark_directory = r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data/dog_bark'
-    # drilling_directory = r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data/drilling'
-    gun_shot_directory = r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data/gun_shot'
-    # jackhammer_directory = r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data/jackhammer'
-    siren_directory = r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data/siren'
-    bell_directory = r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data/bell'
-    construction_sound_directory = r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data/construction_sound'
+    car_horn_directory = #r'location_of_the_sound_samples_folder'
+    children_playing_directory = #r'location_of_the_sound_samples_folder'
+    dog_bark_directory = #r'location_of_the_sound_samples_folder'
+    gun_shot_directory = #r'location_of_the_sound_samples_folder'
+    siren_directory = #r'location_of_the_sound_samples_folder'
+    bell_directory = #r'location_of_the_sound_samples_folder'
+    construction_sound_directory = #r'location_of_the_sound_samples_folder'
 
     # Make Example list for each class
     all_examples = np.zeros((1, 96, 64))
@@ -70,17 +68,9 @@ def collect_example_and_label():
         example_array = np.array([[0, 0, 1, 0, 0, 0, 0]] * example.shape[0])
         all_labels = np.concatenate((all_labels, example_array))
 
-    # for example in drilling:
-    #     example_array = np.array([[0, 0, 0, 1, 0, 0, 0, 0, 0]] * example.shape[0])
-    #     all_labels = np.concatenate((all_labels, example_array))
-
     for example in gun_shot:
         example_array = np.array([[0, 0, 0, 1, 0, 0, 0]] * example.shape[0])
         all_labels = np.concatenate((all_labels, example_array))
-
-    # for example in jackhammer:
-    #     example_array = np.array([[0, 0, 0, 0, 0, 1, 0, 0, 0]] * example.shape[0])
-    #     all_labels = np.concatenate((all_labels, example_array))
 
     for example in siren:
         example_array = np.array([[0, 0, 0, 0, 1, 0, 0]] * example.shape[0])
@@ -126,7 +116,8 @@ def make_example(class_directory, all_examples):
 
 def waveform_to_examples_and_label(file_name):
 
-    file_name = os.path.join(r'/Users/thomaswong/Desktop/PolyU/FYP/urban_sound_data', file_name)
+    file_name = os.path.join(#r'location_of_the_sound_samples_folder'
+        , file_name)
     # Convert the waveform to the example
     waveform_examples = vggish_input.wavfile_to_examples(file_name)
 

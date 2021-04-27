@@ -16,17 +16,29 @@ flags.DEFINE_string(
     'Path to the VGGish checkpoint file.')
 
 flags.DEFINE_string(
-    'tfrecord_file', 'gun_shot_testing_after_trimming.tfrecords',
+    'tfrecord_file', 'training.tfrecords',
     'Path to a TFRecord file where embeddings will be written.')
 
 FLAGS = flags.FLAGS
 
 def main(_):
     # Extract the feature amd labels from sound library
-    # (features_train, features_test, labels_train, labels_test) = utils.collect_example_and_label()
+    (features_train, features_test, labels_train, labels_test) = utils.collect_example_and_label()
+
+    num_of_feature_train = 0
+    num_of_feature_test = 0
+
+    for i in range(len(features_train)):
+        num_of_feature_train += 1
+    
+    for i in range(len(features_test)):
+        num_of_feature_test += 1
+
+    print('Number of training feature', num_of_feature_train)
+    print('Number of testing feature', num_of_feature_test)
 
     # Extract the feature amd labels from a single file
-    (single_file_features, single_file_labels) = utils.waveform_to_examples_and_label('gun_shot_testing_sound.wav')
+    # (single_file_features, single_file_labels) = utils.waveform_to_examples_and_label('gun_shot_testing_sound.wav')
 
     writer = tf.python_io.TFRecordWriter(FLAGS.tfrecord_file)
 
@@ -46,7 +58,7 @@ def main(_):
             vggish_params.OUTPUT_TENSOR_NAME)
 
         # Run inference
-        [embedding_batch] = sess.run([embedding_tensor], feed_dict={features_tensor: single_file_features})
+        [embedding_batch] = sess.run([embedding_tensor], feed_dict={features_tensor: features_train})
 
         # print('example_batch shape: ', features_test.shape)
         # print('embedding_batch shape: ', len(embedding_batch))
@@ -55,16 +67,16 @@ def main(_):
     for i in range(len(embedding_batch)):
         embedding = embedding_batch[i]
 
-        # # convert into proper data type:
-        embedding_label = single_file_labels[i] # embedding.shape[0]
+        # convert into proper data type:
+        embedding_label = labels_train[i] # embedding.shape[0]
         embedding_raw = embedding.tobytes()
 
         if(i == 1):
             print('label', embedding_label)
 
         # Create a feature
-        feature = {'gun_shot_testing_after_trimming/labels': utils._int64_feature(embedding_label),
-                'gun_shot_testing_after_trimming/embedding':  utils._bytes_feature(embedding_raw)}
+        feature = {'training/labels': utils._int64_feature(embedding_label),
+                'training/embedding':  utils._bytes_feature(embedding_raw)}
 
         if(i == 1):
             print('label', feature)
